@@ -7,7 +7,6 @@ using Reexport
 # Helpers
 
 include("Helpers.jl")
-
 include("GatedQueues.jl")
 
 # Basics
@@ -39,6 +38,10 @@ include("Slices.jl")
 
 include("Grams.jl")
 @reexport using .Grams
+
+#Extension
+include("Distributions.jl")
+include("MidiToolBox.jl")
 
 # Input and Output
 

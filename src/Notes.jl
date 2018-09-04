@@ -1,6 +1,8 @@
 module Notes
 
+using DataFrames
 using DigitalMusicology
+
 import Base: hash, ==, show
 import DigitalMusicology.Timed: onset, offset, duration, hasonset, hasoffset, hasduration
 import DigitalMusicology.PitchCollections: pitches
