@@ -106,14 +106,14 @@ function notesequence(notes,n :: Int64)
 end
 
 """
-    quantize(notes,tresh = 1//8 )
+    quantize(notes,thresh = 1//8)
 
 quantize the given notes on a grid which has "cells" of length 'thresh'
 Caution : sometime the resulting onsets and offsets can have rounding problems (eg. 40.400000000006)
 """
-function quantize(note,tresh = 1//8 )
+function quantize(note,thresh = 1//8 :: Ratio)
 
-    return TimedNote(pitch(note),round(Int64,onset(note)/tresh)*tresh,round(Int64,offset(note)/tresh)*tresh)
+    return TimedNote(pitch(note),typeof(onset(note))(round(Int64,onset(note)/thresh)*thresh),typeof(offset(note))(round(Int64,offset(note)/thresh)*thresh))
 end
 """
     ismonophonic(notes,overlap = 0.1)
@@ -122,7 +122,7 @@ verify if the iterator of notes is monophonic with a tolerance given by ‘overl
 """
 function ismonophonic(notes,overlap = 0.1)
     if overlap < 0
-        println("WARNING : negative overlap")
+        println("WARNING : negative overlap, assuming positive")
         overlap *= -1
     end
     ismono = true
